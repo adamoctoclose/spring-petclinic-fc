@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS #{Petclinic.Database.Name};
+-- CREATE DATABASE IF NOT EXISTS #{Petclinic.Database.Name};
 
-ALTER DATABASE #{Petclinic.Database.Name}
-  DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;
+-- ALTER DATABASE #{Petclinic.Database.Name}
+--  DEFAULT CHARACTER SET utf8
+--  DEFAULT COLLATE utf8_general_ci;
 
 
 
