@@ -43,4 +43,4 @@ jobs:
       - name: Build PetClinic
         run: |
           mvn clean package -Dproject.versionNumber=$PACKAGE_VERSION
-          cp /target/*.war "$GITHUB_WORKSPACE/artifacts"
+          cp target/*.war "$GITHUB_WORKSPACE/artifacts"
