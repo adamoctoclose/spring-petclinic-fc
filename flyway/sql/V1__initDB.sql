@@ -6,7 +6,7 @@
 
 
 
-USE #{Petclinic.Database.Name};
+-- USE #{Petclinic.Database.Name};
 
 CREATE TABLE IF NOT EXISTS vets (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
