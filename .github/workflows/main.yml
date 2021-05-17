@@ -42,5 +42,5 @@ jobs:
       # Build PetClinic using maven
       - name: Build PetClinic
         run: |
-          mvn clean package versions:set -DnewVersion=$PACKAGE_VERSION
+          mvn clean package versions:set -DnewVersion=$PACKAGE_VERSION -Drevision=$PACKAGE_VERSION
           cp "$GITHUB_WORKSPACE/target/petclinic.web.$PACKAGE_VERSION.jar" "$GITHUB_WORKSPACE/artifacts/petclinic.web.$PACKAGE_VERSION.jar"
