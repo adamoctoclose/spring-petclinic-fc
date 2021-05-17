@@ -34,6 +34,12 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+          
+      # Install Octopus action
+      - name: Install Octopus CLI
+        uses: OctopusDeploy/isntall-octopus-cli-action@v1.1.1
+        with:
+          version: latest
 
       # Create artifacts folder
       - name: Create artifacts folder
@@ -44,3 +50,6 @@ jobs:
         run: |
           mvn clean package versions:set -DnewVersion=$PACKAGE_VERSION -Drevision=$PACKAGE_VERSION
           cp "$GITHUB_WORKSPACE/target/petclinic.web.$PACKAGE_VERSION.jar" "$GITHUB_WORKSPACE/artifacts/petclinic.web.$PACKAGE_VERSION.jar"
+          
+      # Package flyway
+      
