@@ -52,4 +52,12 @@ jobs:
           cp "$GITHUB_WORKSPACE/target/petclinic.web.$PACKAGE_VERSION.jar" "$GITHUB_WORKSPACE/artifacts/petclinic.web.$PACKAGE_VERSION.jar"
           
       # Package flyway
-      
+      - name: Package Flyway
+        run: |
+          octo pack --id="petclinic.db" --format="Zip" --version="$PACKAGE_VERSION" --basePath="$GITHUB_WORKSPACE/flyway" --outFolder="$GITHUB_WORKSPACE/artifacts"
+          
+      # Push packages to octopus deploy
+      - name: Push packages to Octopus
+        run: |
+          octo push --package="$GITHUB_WORKSPACE/artifacts/petclinic.web.$PACKAGE_VERSION.jar" --server="${{ secrets.OCTOPUS_SERVER_URL }}" --apiKey="${{ secrets.OCTOPUS_API_KEY }}" --space="${{ secrets.OCTOPUS_SERVER_SPACE }}"
+          octo push --package="$GITHUB_WORKSPACE/artifacts/petclinic.db.$PACKAGE_VERSION.zip" --server="${{ secrets.OCTOPUS_SERVER_URL }}" --apiKey="${{ secrets.OCTOPUS_API_KEY }}" --space="${{ secrets.OCTOPUS_SERVER_SPACE }}"      
