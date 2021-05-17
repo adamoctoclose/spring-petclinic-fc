@@ -34,7 +34,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-          
+
+      # Create artifacts folder
+      - name: Create artifacts folder
+        run: mkdir "$GITHUB_WORKSPACE/artifacts"
+
       # Build PetClinic using maven
       - name: Build PetClinic
-        run: mvn clean package -Dproject.versionNumber=$PACKAGE_VERSION
+        run: |
+          mvn clean package -Dproject.versionNumber=$PACKAGE_VERSION
+          cp /target/*.war "$GITHUB_WORKSPACE/artifacts"
