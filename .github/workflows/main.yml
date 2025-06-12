@@ -58,7 +58,9 @@ jobs:
         uses: OctopusDeploy/push-package-action@v3
         with:
           space: "Retail Banking"
-          packages: artifacts/petclinic.web.${{ env.PACKAGE_VERSION }}.war  # FIXED path and format
+          packages: |
+            artifacts/petclinic.web.${{ env.PACKAGE_VERSION }}.war  # FIXED path and format
+            artifacts/petclinic.db.${{ env.PACKAGE_VERSION }}.zip
 
       - name: Push Build Information to Octopus
         uses: OctopusDeploy/push-build-information-action@v3
