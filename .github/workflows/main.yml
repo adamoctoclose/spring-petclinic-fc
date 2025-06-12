@@ -44,6 +44,15 @@ jobs:
         run: |
           mvn clean package -Pwar versions:set -DnewVersion=${{ env.PACKAGE_VERSION }} -Drevision=${{ env.PACKAGE_VERSION }}
           cp "$GITHUB_WORKSPACE/target/petclinic.web.${{ env.PACKAGE_VERSION }}.war" "$GITHUB_WORKSPACE/artifacts/petclinic.web.${{ env.PACKAGE_VERSION }}.war"
+      - name: Create Zip Package for Octopus Deploy
+        uses: OctopusDeploy/create-zip-package-action@v3.0.2
+        with:
+          package_id: petclinic.db
+          version: ${{ env.PACKAGE_VERSION }}
+          output_folder: ${{ github.workspace }}/artifacts
+          base_path: ${{ github.workspace }}/flyway
+          files: |
+            **
 
       - name: Push Package to Octopus
         uses: OctopusDeploy/push-package-action@v3
@@ -57,4 +66,5 @@ jobs:
           space: "Retail Banking"
           packages: |
             petclinic.web
+            petclinic.db
           version: ${{ env.PACKAGE_VERSION }}
