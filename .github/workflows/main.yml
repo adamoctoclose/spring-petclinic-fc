@@ -70,3 +70,11 @@ jobs:
             petclinic.web
             petclinic.db
           version: ${{ env.PACKAGE_VERSION }}
+     
+      - name: Create Release in Octopus
+        uses: OctopusDeploy/create-release-action@v3.1.0
+        with:
+          space: "Retail Banking"
+          project: "Consumer Data Frontend"
+          git_ref: "main"
+          
