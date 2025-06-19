@@ -57,7 +57,7 @@ jobs:
       - name: Push Package to Octopus
         uses: OctopusDeploy/push-package-action@v3
         with:
-          space: "TD Securities"
+          space: "Retail Banking"
           packages: |
             artifacts/petclinic.web.${{ env.PACKAGE_VERSION }}.war
             artifacts/petclinic.db.${{ env.PACKAGE_VERSION }}.zip
@@ -65,7 +65,7 @@ jobs:
       - name: Push Build Information to Octopus
         uses: OctopusDeploy/push-build-information-action@v3
         with:
-          space: "TD Securities"
+          space: "Retail Banking"
           packages: |
             petclinic.web
             petclinic.db
@@ -74,7 +74,7 @@ jobs:
       - name: Create Release in Octopus
         uses: OctopusDeploy/create-release-action@v3.1.0
         with:
-          space: "TD Securities"
+          space: "Retail Banking"
           project: "Consumer Data Frontend"
           git_ref: "main"
           
